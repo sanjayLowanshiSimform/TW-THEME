@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- Include the Tailwind CSS CDN link here -->
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .tab-content {
+      display: none;
+    }
+
+    .active-tab {
+      background-color: #4A90E2;
+      /* Change this color to your desired active tab color */
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <div class="grid grid-cols-4">
+    <div class="bg-gray-800 text-white h-screen">
+      <div class="py-6">
+        <a href="#" data-tab="buttons" class="tab-link block px-4 py-2 text-white hover:bg-gray-600">Buttons</a>
+        <a href="#" data-tab="forms" class="tab-link block px-4 py-2 text-white hover:bg-gray-600">forms</a>
+        <a href="#" data-tab="toast" class="tab-link block px-4 py-2 text-white hover:bg-gray-600">Toast</a>
+      </div>
+    </div>
+    <div class="col-span-3 bg-white p-8">
+      <div class="tab-content" id="buttons">
+
+        <button type="button" class="btn btn-save">.btn-save</button>
+        <button type="button" class="btn btn-alt">Alternative</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-light">Edit</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+
+      </div>
+      <div class="tab-content" id="forms">
+        <h2 class="text-2xl font-bold">Page 2 Content</h2>
+        <p>This is the content of Page 2.</p>
+      </div>
+      <div class="tab-content" id="toast">
+        <h2 class="text-2xl font-bold">Page 3 Content</h2>
+        <p>This is the content of Page 3.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Show the first tab content by default
+      $("#buttons").show();
+
+      $(".tab-link").click(function (e) {
+        e.preventDefault();
+        var tabId = $(this).data("tab");
+        $(".tab-content").hide();
+        $("#" + tabId).show();
+
+        // Remove active class from all tabs and add it to the clicked tab
+        $(".tab-link").removeClass("active-tab");
+        $(this).addClass("active-tab");
+      });
+    });
+  </script>
+</body>
+
+</html>
